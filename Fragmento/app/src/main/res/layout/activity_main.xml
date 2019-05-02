@@ -8,44 +8,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
-<LinearLayout android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal">
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-    android:text="Nombre"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/edit_text_nombre_xml"
-    />
-</LinearLayout>
-<LinearLayout android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal">
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Apellido"/>
-    <EditText android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/edit_text_apellido_xml"
-    />
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-</LinearLayout>
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Send"
-            android:id="@+id/btn_send"/>
-<!--TODO(2.1) Ahora implementar el RecyclerView en el Graddle-->
     <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:layout_gravity="center"
-                  android:orientation="vertical">
-        <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:id="@+id/recyclerView_xml"
-                android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:id="@+id/land_primero">
     </LinearLayout>
 </LinearLayout>
