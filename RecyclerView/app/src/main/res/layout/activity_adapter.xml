@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TODO(1.1) Tambien se creo un archivo nuevo por la dicha actividad -->
+<!--TODO(3) Ahora a crear el diseño que tendra el recycler del otro XML-->
+<!-- TODO(3.1) Implementar el card view en el Graddle-->
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:background="@color/colorAccent"
+        app:cardUseCompatPadding="true"
+        tools:context=".Adapter">
+<LinearLayout android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="20dp"
+>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Nombre: "
+              android:layout_marginRight="10dp"
+    />
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="N/A"
+              android:layout_marginRight="30dp"
+              android:id="@+id/text_view_adapter_nombre"
+    />
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Apellido: "
+              android:layout_marginRight="10dp"
+    />
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="N/A"
+              android:id="@+id/text_view_adapter_apellido"
+    />
+</LinearLayout>
+</android.support.v7.widget.CardView>
