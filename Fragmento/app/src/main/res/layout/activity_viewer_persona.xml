@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TODO(16.1) Vaya ahora vamos a crear la segunda pantalla del INTENT-->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Recycler.ViewerPersona">
+    <!--TODO(17) Le pondremos ID a un textView vacio-->
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="20dp"
+                  android:orientation="horizontal">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginRight="10dp"
+                  android:text="Nombre: "/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text=" "
+                  android:id="@+id/text_view_viewer_nombre"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:padding="20dp"
+                  android:orientation="horizontal">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginRight="10dp"
+                  android:text="Apellido: "/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/text_view_viewer_apellido"
+                  android:text=" " />
+    </LinearLayout>
+</LinearLayout>
