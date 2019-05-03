@@ -1,47 +1,75 @@
 package com.example.recyclerview.Fragmento
 
 import android.content.Context
+import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.recyclerview.Modelo.ObjetoPersona
 import com.example.recyclerview.R
+import com.example.recyclerview.Recycler.Adapter
+import com.example.recyclerview.Recycler.ViewerPersona
+import kotlinx.android.synthetic.main.activity_adapter.*
+import kotlinx.android.synthetic.main.fragment_fragment_first.*
+import kotlinx.android.synthetic.main.fragment_fragment_first.view.*
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class fragment_first : Fragment() {
+    lateinit var mAdapter: Adapter
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
-    private var param1: String? = null
-    private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    interface personClickListener{
+        fun personaPortrait(person:ObjetoPersona)
+        fun landscape(person: ObjetoPersona)
     }
+
+    var listener : personClickListener?=null
+    lateinit var viewGlobal : View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_first, container, false)
-    }
+        var view =  inflater.inflate(R.layout.fragment_fragment_first, container, false)
 
+        viewGlobal = view
 
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
+        viewManager = LinearLayoutManager(viewGlobal.context)
+
+        val listaPersona=ArrayList<ObjetoPersona>()
+
+        viewGlobal.btn_send.setOnClickListener {
+            val name1 = edit_text_nombre_xml.text.toString()
+            val lastName = edit_text_apellido_xml.text.toString()
+
+            listaPersona.add(ObjetoPersona(name1, lastName))
+
+            if(viewGlobal.resources.configuration.orientation==Configuration.ORIENTATION_PORTRAIT){
+            mAdapter = Adapter(listaPersona,
+                { variable: ObjetoPersona -> listener?.personaPortrait(variable)})
+                Log.d("simon","PORT")
+            }else{
+                mAdapter = Adapter(listaPersona,
+                    { variable: ObjetoPersona -> listener?.landscape(variable)})
+                Log.d("simon","LAND")
+            }
+            recyclerView_xml.adapter=mAdapter
+            recyclerView_xml.layoutManager=viewManager
+        }
+        return view
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
+        if (context is personClickListener) {
             listener = context
         } else {
             throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
@@ -51,22 +79,7 @@ class fragment_first : Fragment() {
     override fun onDetach() {
         super.onDetach()
         listener = null
+
     }
 
-
-    interface OnFragmentInteractionListener {
-
-        fun onFragmentInteraction(uri: Uri)
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_first().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
